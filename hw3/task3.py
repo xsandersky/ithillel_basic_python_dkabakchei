@@ -1,0 +1,6 @@
+number = input('Введи трехзначное число: ')
+a = ord(number[0])
+b = ord(number[1])
+c = ord(number[2])
+print('Длинный вариант решения: ', a + b + c - 48*3)
+print('Короткий вариант решения: ', ord(number[0]) + ord(number[1]) + ord(number[2]) - 48*3)
