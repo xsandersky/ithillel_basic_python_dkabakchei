@@ -1,0 +1,7 @@
+a = input()
+a = a.split('_')
+a[0] = a[0].capitalize()
+a[1] = a[1].capitalize()
+a[2] = a[2].capitalize()
+a = ''.join(a)
+print(a)
