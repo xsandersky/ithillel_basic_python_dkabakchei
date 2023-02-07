@@ -13,9 +13,9 @@ print()
 # solution with 'find' and 'rfind'
 h_i = 'Taras Shevchenko*1814-03-09*1861-03-10' # через хардкод реализовал
 x1 = h_i.find('*')
-born = int(h_i[x1 + 1: x1 + 5])
+born = int(h_i[x1 + 1:x1 + 5])
 x2 = h_i.rfind('*')
-death = int(h_i[x2 + 1: x2 + 5])
+death = int(h_i[x2 + 1:x2 + 5])
 age = death - born
 print('Name:', h_i[:x1])
 print('Age:', age, 'years')
