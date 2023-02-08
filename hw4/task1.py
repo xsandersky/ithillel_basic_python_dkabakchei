@@ -8,8 +8,7 @@ print(a)
 print()
 
 #2
-txt = 'employee_first_name'
-txt = txt.title()
+txt = 'employee_first_name'.title()
 txt = txt.split('_')
 txt = ''.join(txt)
 print(txt)
