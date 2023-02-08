@@ -19,3 +19,10 @@ death = int(h_i[x2 + 1:x2 + 5])
 age = death - born
 print('Name:', h_i[:x1])
 print('Age:', age, 'years')
+
+print()
+
+#3 .split()
+x = 'Taras Shevchenko*1814-03-09*1861-03-10'.split("*")
+print('Name:', x[0])
+print('Age:', int(x[2][:4]) - int(x[1][:4]),'years')
