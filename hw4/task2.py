@@ -7,7 +7,6 @@ data_2 = int(human_info[::-1][b - 1:b - 5:-1])
 old = data_2 - data_1
 print('Name:', human_info[:a])
 print('Age:', old, 'years')
-
 print()
 
 # solution with 'find' and 'rfind'
@@ -19,7 +18,6 @@ death = int(h_i[x2 + 1:x2 + 5])
 age = death - born
 print('Name:', h_i[:x1])
 print('Age:', age, 'years')
-
 print()
 
 #3 .split()

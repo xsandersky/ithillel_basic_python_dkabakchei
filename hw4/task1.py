@@ -5,7 +5,6 @@ a[1] = a[1].capitalize()
 a[2] = a[2].capitalize()
 a = ''.join(a)
 print(a)
-
 print()
 
 #2
