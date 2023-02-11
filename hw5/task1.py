@@ -1,12 +1,10 @@
-from math import pi
+from math import cos, pi
 
-def rad(x, y, z):
+def degrees2radians(x):
     u1 = (x * pi) / 180
-    u2 = (y * pi) / 180
-    u3 = (z * pi) / 180
-    return u1, u2, u3
+    return u1
 
 a, b, c = 60, 45, 40
-u1, u2, u3 = rad(a, b, c)
+x1, x2, x3 = cos(degrees2radians(a)), cos(degrees2radians(b)), cos(degrees2radians(c))
 
-print(f'Кут 60 градусів = {u1} \nКут 45 градусів = {u2} \nКут 40 градусів = {u3}')
+print(f'Косинус кута 60 градусів = {x1} \nКосинус кута 45 градусів = {x2} \nКосинус кута 40 градусів = {x3}')
