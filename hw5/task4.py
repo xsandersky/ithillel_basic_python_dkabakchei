@@ -1,8 +1,10 @@
-def my_sum(*x, start=0):
-    y = start + sum(x)
+def my_sum(*x, start = 0):
+    y = sum(x, start)
     return y
 
+
 x = my_sum(3, 4, 5, 5, 44)
+
 print(f'Сумма чисел с заранее переданными аргументами в функцию = {x}')
 print()
 
