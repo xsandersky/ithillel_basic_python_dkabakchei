@@ -3,7 +3,6 @@ def is_even(number): # returns boolean value
 
 
 def main():
-    
     x = float(input())
 
     if is_even(x):
