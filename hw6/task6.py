@@ -6,6 +6,7 @@ def sign(x):
     else:
         return 0
     
+    
 def main():
     a = float(input())
     print(sign(a))
