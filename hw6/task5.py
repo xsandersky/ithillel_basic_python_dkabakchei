@@ -4,7 +4,11 @@ def year(x):
 
 def main():
     x = int(input())
-    print(year(x))
+    
+    if year(x) is True:
+        print('YES')
+    else:
+        print('NO')
 
 
 main()

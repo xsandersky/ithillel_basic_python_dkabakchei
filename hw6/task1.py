@@ -7,7 +7,7 @@ def main():
 
     if is_even(x):
         print('Yes')
-    if not is_even(x):
+    else:
         print('No')
 
 
