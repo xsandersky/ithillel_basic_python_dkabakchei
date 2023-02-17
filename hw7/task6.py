@@ -9,7 +9,7 @@ def fibonacci(n):
 
 def main():
     n = 20
-    print(fibonacci(n))
+    print(f'20 число в последовательности Фибоначчи: {fibonacci(n)}')
 
 
 main()
