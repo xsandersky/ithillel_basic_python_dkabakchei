@@ -1,7 +1,7 @@
 def main():
     kilograms = float(input())
 
-    calculate_wheat_chess_position_kilograms = 10 / 0.035
+    calculate_wheat_chess_position_kilograms = kilograms / 0.000035
     count_seeds_on_n_position = 1
 
     for i in range(97, 105):
