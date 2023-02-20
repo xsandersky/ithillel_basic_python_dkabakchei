@@ -2,7 +2,7 @@ from random import randint
 
 
 def main():
-    n = randint(1, 3)
+    n = randint(1, 11)
     x = int(input('Введи число от 1 до 10: '))
 
     while x != n:
