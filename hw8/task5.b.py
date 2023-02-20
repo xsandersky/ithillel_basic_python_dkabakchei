@@ -11,7 +11,7 @@ def get_max_digit(number):
 
 
 def main():
-    a = randint(100000000000, 999999999999)
+    a = randint(pow(10, 12), pow(10, 13) - 1)
     
     print(get_max_digit(a))
 
