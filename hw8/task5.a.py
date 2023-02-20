@@ -1,13 +1,12 @@
-a = 1223338555550
-
-b = max(str(a))
-
-maxi = 0
-
-while a != 0:
-    if a % 10 > maxi:
-        maxi = a % 10
-    a = a // 10
+def get_max_digit(number):
+    b = max(str(number))
+    return int(b)
 
 
-print(b, maxi)
+def main():
+    numb = 12233385
+
+    print(get_max_digit(numb))
+
+
+main()
