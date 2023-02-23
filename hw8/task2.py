@@ -32,13 +32,13 @@ def main():
 
     lst1 = ['a', 1, 2.0, ['b']]
     lst2 = copydeep(lst1)
-    
+    lst3 = copydeep('hello')
+    lst4 = copydeep(123)
+    lst5 = ('a', 1, 2.0, ['b'])
+    lst6 = copydeep(lst5)
+
     lst1[3].append(0)
 
-    a = 3
-    s=3
-    print(a, s)
-    print(lst1, lst2, sep='\n')
-
+    print(lst1, lst2, lst3, lst4, lst6, sep='\n')
 
 main()
