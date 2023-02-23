@@ -1,9 +1,7 @@
 def index(lst, elem):  # returns integer or None
-    for i in range(len(lst)):
-        if lst[i] != elem:
-            continue
-        else:
-            return i
+    for idx, value in enumerate(lst):
+        if value == elem:
+            return idx
 
 
 def main():

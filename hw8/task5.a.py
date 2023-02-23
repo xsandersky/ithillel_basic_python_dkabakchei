@@ -4,7 +4,7 @@ def get_max_digit(number):
 
 
 def main():
-    numb = 12233385
+    numb = 190548031427
 
     print(get_max_digit(numb))
 

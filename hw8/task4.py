@@ -1,14 +1,16 @@
-def gen_primes(lst = []):
-    divide = 0 
+def gen_primes():
 
-    for i in range(1, 101):
-        divide = 0
-        for j in range(1, i+1):
+    lst = []
+
+    for i in range(2, 101):
+        flag = False
+        for j in range(2, i):
             if i % j == 0:
-                divide += 1
-        if divide > 1 and divide < 3:
+                flag = True
+                break
+        if flag == False:
             lst.append(i)
-
+            
     return lst
 
 

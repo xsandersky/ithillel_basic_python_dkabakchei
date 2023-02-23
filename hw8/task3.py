@@ -7,9 +7,9 @@ def main():
     print()
     print()
 
-    lst2 = [472, 326, 1, '1101000', '99', 9, '20', 863, '0']
+    lst2 = [472, 326, 1, 999.0,  '1101000', '99', 9, '20', 863, '0']
 
-    lst2_sort = sorted(lst2, key=str)
+    lst2_sort = sorted(lst2, key=lambda x: str(x)[0])
     print(f'# original list\n{lst2}\n# sorted list\n{lst2_sort}')
 
 
