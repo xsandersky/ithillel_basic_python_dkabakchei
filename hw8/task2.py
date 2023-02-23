@@ -5,7 +5,6 @@ def copydeep(obj):
         for i in range(len(obj)):
             value.append(copydeep(obj[i]))
 
-
     elif isinstance(obj, tuple):
         value = ()
         for i in range(len(obj)):
@@ -19,11 +18,11 @@ def copydeep(obj):
 
 def main():
 
-    lst1 = ('a', 1, 2.0, ['b'])
+    lst1 = ['a', 1, 2.0, ['b']]
     lst2 = copydeep(lst1)
     lst1[3].append(0)
-    lst5 = copydeep(123)
-    print(lst1, lst2, lst5, sep='\n')
+
+    print(lst1, lst2, sep='\n')
 
 
 main()
