@@ -41,4 +41,8 @@ def main():
 
     print(lst1, lst2, lst3, lst4, lst6, sep='\n')
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 585bffbf0bed6e4a3e6b253131c1f81ce0fb88dc
 main()
