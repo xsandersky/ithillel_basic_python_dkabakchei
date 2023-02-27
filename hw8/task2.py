@@ -7,11 +7,6 @@ def copydeep(obj):
         if isinstance(obj, tuple):
             value = tuple(value)
 
-    #elif isinstance(obj, tuple):
-      #  value = ()
-      #  for i in range(len(obj)):
-       #     value += (copydeep(obj[i]),)
-
     else:
         value = obj
 

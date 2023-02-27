@@ -3,7 +3,6 @@ def lchain(*iterables):  # returns list
     lst = []
 
     for value in iterables:
-        value = list(value)
         lst.extend(value)
 
     return lst

@@ -10,7 +10,7 @@ def copydeep(obj):
     elif isinstance(obj, dict):
         value = {}
         for key in obj:
-            value[key] = obj[key]
+            value[key] = copydeep(obj[key])
     
     else:
         value = obj
@@ -20,7 +20,7 @@ def copydeep(obj):
 
 def main():
 
-    lst1 = ('a', 1, 2.0, ['b', {1:2}])
+    lst1 = ('a', 1, 2.0, ['b'])
     lst2 = copydeep(lst1)
     lst1[3].append(0)
 

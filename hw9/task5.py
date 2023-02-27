@@ -8,18 +8,19 @@ def group_by_surname(list_of_enrollees): # returns 4 ints
 
     for value in list_of_enrollees:
 
-        fio_str = ''.join(value)
-        idx_s = fio_str.find(' ') + 1
+        idx_s = value.find(' ') + 1
+        fio_char = ord(value[idx_s].upper())  # value[idx] equal char from ASCI table. 'A' = 65....'Z' = 90
 
-        if ord(fio_str[idx_s]) < 74:
+        
+        if fio_char < 74:
             mit_dict['A_I'] += 1
 
-        elif ord(fio_str[idx_s]) > 73 and ord(fio_str[idx_s]) < 81:
+        elif 73 < fio_char < 81:
             mit_dict['J_P'] += 1
-
-        elif ord(fio_str[idx_s]) > 80 and ord(fio_str[idx_s]) < 85:
+        
+        elif 80 < fio_char < 85:
             mit_dict['Q_T'] += 1
-            
+                
         else:
             mit_dict['U_Z'] += 1
         
