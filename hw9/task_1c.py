@@ -8,8 +8,6 @@ def diff_min_max(num_limit, lower_bound, upper_bound): # returns int
 
     for _ in range(num_limit):
         lst.append(randint(lower_bound, upper_bound))
-    
-    print(lst)
         
     for i in lst:
         if i < min_num:
@@ -17,7 +15,7 @@ def diff_min_max(num_limit, lower_bound, upper_bound): # returns int
 
         if i > max_num:
             max_num = i
-    print(min_num, max_num)
+
     return max_num - min_num
 
 

@@ -9,8 +9,8 @@ def copydeep(obj):
 
     elif isinstance(obj, dict):
         value = {}
-        for key in obj:
-            value[key] = copydeep(obj[key])
+        for key, val in obj.items():
+            copydeep(value[key]) == copydeep(val)
     
     else:
         value = obj
