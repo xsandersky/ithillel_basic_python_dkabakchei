@@ -1,7 +1,6 @@
 from random import randint
 
 
-
 def get_integer():
     int_input = int(input('Input some number from 1 to 100: '))
     return int_input
@@ -48,15 +47,13 @@ def user_find_num():
 
 
 def pc_find_num():
-    
     num_lst = [i for i in range(1, 101)] 
-
     hint_help()
+
     num = randint(num_lst[0], num_lst[-1])
     print('Рандомное число которое должен угадать ПК:', num)
     pc_num = randint(num_lst[0], num_lst[-1])
     print('Пк называет число:', pc_num)
-    
     
     char = get_str()
     
@@ -93,11 +90,11 @@ def pc_find_num():
 def main():
     print('Если хочешь сам угадывать числа, то нажми кнопку "m" | Если хочешь, чтобы ПК угадывал числа, нажми кнопку "p"')
  
-    a = get_str()
+    char = get_str()
 
-    if a == 'p':
+    if char == 'p':
         pc_find_num()
-    elif a == 'm':
+    elif char == 'm':
         user_find_num()
     print('Смотри куда ты жмешь!')
         
