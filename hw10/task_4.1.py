@@ -1,6 +1,6 @@
 from random import randint
 
-num_lst = [i for i in range(1, 101)]
+
 
 def get_integer():
     int_input = int(input('Input some number from 1 to 100: '))
@@ -20,7 +20,7 @@ def get_str():
     return str_input
 
 
-def idx_num_in_list(pc_num):
+def idx_num_in_list(pc_num, num_lst):
     x = 0
     
     for i in num_lst:
@@ -48,38 +48,35 @@ def user_find_num():
 
 
 def pc_find_num():
-    num_lst = [i for i in range(1, 101)]
     
-    hint_help()
+    num_lst = [i for i in range(1, 101)] 
 
+    hint_help()
     num = randint(num_lst[0], num_lst[-1])
     print('Рандомное число которое должен угадать ПК:', num)
     pc_num = randint(num_lst[0], num_lst[-1])
     print('Пк называет число:', pc_num)
+    
     
     char = get_str()
     
     while True:
         if char == 'w':
             print('Это число больше, попробуй еще раз угадать')
-            x= 0
-            for i in num_lst:
-                if i == pc_num:
-                    break
-                x += 1
-            num_lst = num_lst[:x]
+            
+            idx_num = idx_num_in_list(pc_num, num_lst)
+            num_lst = num_lst[:idx_num]
             pc_num = randint(num_lst[0], num_lst[-1])
+
             print('Новое рандомное число:', pc_num)
 
         elif char == 's':
             print('Это число меньше, попробуй еще раз угадать')
-            x = 0
-            for i in num_lst:
-                if i == pc_num:
-                    break
-                x += 1
-            num_lst = num_lst[x + 1:]
+
+            idx_num = idx_num_in_list(pc_num, num_lst)
+            num_lst = num_lst[idx_num + 1:]
             pc_num = randint(num_lst[0], num_lst[-1])
+
             print('Новое рандомное число:', pc_num)
 
         elif char == '=':
@@ -102,6 +99,7 @@ def main():
         pc_find_num()
     elif a == 'm':
         user_find_num()
+    print('Смотри куда ты жмешь!')
         
     
 if __name__=='__main__':
