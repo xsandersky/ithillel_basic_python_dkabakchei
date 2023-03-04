@@ -2,30 +2,28 @@ def copydeep(obj, memory=None):
     if memory is None:
         memory = {}
 
-    if id(obj) not in memory:
-        memory[id(obj)] = obj
-        for elem in obj:
-            if isinstance(elem, list):
-                value = []
-                for val in elem:
-                    value.append(copydeep(val, memory))
-                return value
-
-            elif isinstance(elem, dict):
-                value = {}
-                for key, val in elem.items():
-                    value[copydeep(key, memory)] = copydeep(val, memory)
-                return value
-                
-            else:
-                value = obj
-                return value   
-    else:
+    if id(obj) in memory:
         return memory[id(obj)]
 
+    if isinstance(obj, list):
+        new_lst = []
+        memory[id(obj)] = new_lst
+        for val in obj:
+            new_lst.append(copydeep(val, memory))
+        return new_lst
+
+    elif isinstance(obj, dict):
+        new_dict = {}
+        memory[id(obj)] = new_dict
+        for key, val in obj.items():
+            new_dict[copydeep(key)] = copydeep(val, memory)
+        return new_dict
+                
+    else:
+        return obj
+        
 
 def main():
-
     test_data = [1, 2, [4, 5, 6], {'A': 'B', 'c': [3658]}, 2.0, {'e': 0}]
     test_data[3]['d'] = test_data
     test_data[-1]['f'] = test_data[-1]

@@ -1,9 +1,31 @@
 from random import randint
+import string
 
 
 def get_integer():
-    int_input = int(input('Input some number from 1 to 100: '))
-    return int_input
+    user_input = input('Жмакай цифру: ')
+    
+    while True:
+        if user_input.isdigit():
+                break
+        else:
+            user_input = input('Введи число: ')
+            
+    user_input = int(user_input)
+    
+    return user_input
+
+
+def get_str():    
+    user_input = input('Нажимай на букву: ')
+
+    while True:
+        if user_input in string.ascii_letters or user_input in '=':
+                break
+        else:
+            user_input = input('Жми на букву, а не цифру:)')
+    
+    return user_input
 
 
 def hint_help():
@@ -13,11 +35,6 @@ def hint_help():
     print('|' + txt + '|')
     print('|' + '-' * lenght_txt + '|')
     
-
-def get_str():
-    str_input = input()
-    return str_input
-
 
 def idx_num_in_list(pc_num, num_lst):
     x = 0
@@ -38,7 +55,7 @@ def user_find_num():
             print('Твое число больше рандомного')
         else:
             print('Твое число меньше рандомного')
-        my_num = int(input('Введи число: '))
+        my_num = get_integer()
     print('Угадал')
     
     print(f'Запустить игру повторно?\nНажми "y" если хочешь продолжить | Нажми "n" если хочешь закончить игру')
@@ -58,7 +75,7 @@ def pc_find_num():
     char = get_str()
     
     while True:
-        if char == 'w':
+        if char in 'Ww':
             print('Это число больше, попробуй еще раз угадать')
             
             idx_num = idx_num_in_list(pc_num, num_lst)
@@ -67,7 +84,7 @@ def pc_find_num():
 
             print('Новое рандомное число:', pc_num)
 
-        elif char == 's':
+        elif char in 'sS':
             print('Это число меньше, попробуй еще раз угадать')
 
             idx_num = idx_num_in_list(pc_num, num_lst)
@@ -88,16 +105,15 @@ def pc_find_num():
 
 
 def main():
-    print('Если хочешь сам угадывать числа, то нажми кнопку "m" | Если хочешь, чтобы ПК угадывал числа, нажми кнопку "p"')
- 
+    print('Если хочешь сам угадывать числа, то нажми кнопку "m" | Если хочешь, чтобы ПК угадывал числа, нажми кнопку "p": ')
+    
     char = get_str()
 
-    if char == 'p':
+    if char in 'p':
         pc_find_num()
-    elif char == 'm':
+    elif char in 'm':
         user_find_num()
-    print('Смотри куда ты жмешь!')
-        
-    
+
+
 if __name__=='__main__':
     main()
