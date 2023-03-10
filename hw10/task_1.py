@@ -16,7 +16,7 @@ def copydeep(obj, memory=None):
         new_dict = {}
         memory[id(obj)] = new_dict
         for key, val in obj.items():
-            new_dict[copydeep(key)] = copydeep(val, memory)
+            new_dict[copydeep(key, memory)] = copydeep(val, memory)
         return new_dict
                 
     else:

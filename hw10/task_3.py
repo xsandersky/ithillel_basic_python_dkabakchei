@@ -10,44 +10,38 @@ def pemrtuate(text):
     for elem in list_text:
         new_lst = []
         
-        if len(elem) > 3:
-            elem = list(elem)
-            firs_elem = elem[0]
-            last_elem = elem[-1]
-            mid_txt = elem[1:-1]
+        if len(elem) < 4:
+            all_txt.append(elem)
 
-            new_lst.extend(firs_elem)  
+        else:
+            mid_txt = list(elem[1:-1])
+            new_lst.append(elem[0])
+
             while len(mid_txt) > 2:
-                idx_txt_0_2_ = mid_txt[:3]
-                copy_idx_txt_0_2_ = idx_txt_0_2_.copy()
-                shuffle(idx_txt_0_2_)
+                chunk = mid_txt[:3]
+                copy_idx_txt_0_2_ = chunk.copy()
 
-                while True:
-                    if idx_txt_0_2_ != copy_idx_txt_0_2_:
-                        new_lst.extend(idx_txt_0_2_)
-                        break
-                    shuffle(idx_txt_0_2_)
-                
+                shuffle(chunk)
+                while chunk == copy_idx_txt_0_2_:
+                    shuffle(chunk)
+                new_lst.extend(chunk)
                 mid_txt = mid_txt[3:]
 
             if len(mid_txt) == 2:
-                copy_mid_txt = mid_txt.copy()
-                shuffle(mid_txt)
-                while True:
-                    if mid_txt != copy_mid_txt:
-                        new_lst.extend(mid_txt)
-                        break
-                    shuffle(mid_txt)       
+                if mid_txt[0] == mid_txt[1]:
+                    new_lst.extend(mid_txt)
+                    break
 
-            else:
-                new_lst.extend(mid_txt)
+                else:
+                    copy_mid_txt = mid_txt.copy()
+                    
+                    shuffle(mid_txt)
+                    while mid_txt == copy_mid_txt:
+                        shuffle(mid_txt) 
+                    new_lst.extend(mid_txt)
 
-            new_lst.extend(last_elem)
-            new_lst = ''.join(new_lst)
-            all_txt.append(new_lst)
-
-        else:
-            all_txt.append(elem)
+            new_lst.append(elem[-1])
+            all_txt.append(''.join(new_lst))
 
     final = ' '.join(all_txt)
 
