@@ -19,10 +19,9 @@ def pemrtuate(text):
 
             while len(mid_txt) > 2:
                 chunk = mid_txt[:3]
-                copy_idx_txt_0_2_ = chunk.copy()
 
                 shuffle(chunk)
-                while chunk == copy_idx_txt_0_2_:
+                while chunk == mid_txt[:3]:
                     shuffle(chunk)
 
                 new_lst.extend(chunk)
