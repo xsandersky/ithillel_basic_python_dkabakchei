@@ -29,14 +29,6 @@ def get_str(prompt, valid_char):
     return user_input.lower()
 
 
-def hint_help():
-    txt = 'Если число от ПК больше рандомного, то нажми "w" | Если число меньше, нажми "s" | Если угадал, то нажми "="'
-    lenght_txt = len(txt)
-    print('|' + '-' * lenght_txt + '|')
-    print('|' + txt + '|')
-    print('|' + '-' * lenght_txt + '|')
-
-
 def user_find_num():
     lower_bound = 1
     upper_bound = 100
@@ -61,17 +53,14 @@ def user_find_num():
 def pc_find_num():
     lower_bound = 1
     upper_bound = 100
-    my_num = get_integer('Загадай число от 1 до 100: ', lower_bound, upper_bound)
-
-    print('Рандомное число которое должен угадать ПК:', my_num)
-    hint_help()
-
-    pc_num = randint(lower_bound, upper_bound)
-    print('- Пк называет число:', pc_num)
-
-    char = get_str('Нажми букву согласно инструкции: ', ('w', 's'))
+    
+    print('Загадай число от 1 до 100: ')
 
     while True:
+        pc_num = randint(lower_bound, upper_bound)
+        print('- Пк называет число:', pc_num)
+        char = get_str('Если число которое выдал ПК больше загаданного, нажми: "w", если меньше - жми: "s", если угадал - жми: "="', ('w', 's', '='))
+
         if char in 'w':
             upper_bound = pc_num
             print(f'Это число больше, следующее рандомное число от ПК в пределах от {lower_bound} до {upper_bound}')
@@ -83,10 +72,6 @@ def pc_find_num():
         elif char in '=':
             print(f'ПК Угадал. Наше число {pc_num}')
             break
-
-        pc_num = randint(lower_bound, upper_bound)
-        print('- Пк называет число: ', pc_num)
-        char = get_str('Жми букву "w" если число больше, "s" если число меньше, "=" если угадал: ', ('w', 's', '='))
 
 
 def main():
