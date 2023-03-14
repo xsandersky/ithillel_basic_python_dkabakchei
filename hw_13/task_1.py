@@ -3,6 +3,7 @@ class Godzilla:
         self.stomach_volume = stomach_volume
         self.stomach_contain = 0
 
+        
     def eat(self, volume_human):
         if  self.stomach_contain + volume_human <= self.stomach_volume:
             self.stomach_contain += volume_human
