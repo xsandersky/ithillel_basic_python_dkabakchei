@@ -3,13 +3,15 @@ class Godzilla:
         self.stomach_volume = stomach_volume
         self.stomach_contain = 0
 
-        
+
     def eat(self, volume_human):
         if  self.stomach_contain + volume_human <= self.stomach_volume:
             self.stomach_contain += volume_human
+
             print(f'Годзилла с объемом желудка {self.stomach_volume} съела человека объемом {volume_human}')
             if self.stomach_contain > self.stomach_volume * 0.9:
                 print('Годзилла наелся и больше не может есть людей')
+
         else:
             print('Годзилла не может съесть данного человека из-за недостатка места в желудке')
 
