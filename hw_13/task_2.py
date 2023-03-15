@@ -10,11 +10,9 @@ class Circle:
         self.y = y
         self.r = 2
 
+
     def cheker_point(self, point):
-        if (point.x - self.x)**2 + (point.y - self.y)**2 <= self.r ** 2:
-            return True
-        else:
-            return False
+         return (point.x - self.x)**2 + (point.y - self.y)**2 <= self.r ** 2
 
 
 if __name__=='__main__':
