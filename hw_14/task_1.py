@@ -29,7 +29,7 @@ class Airplane(Vehicle):
     point_of_use = 'air vehicle'
     
     def __init__(self, body_material):
-        super().__init__(body_material)
+        super().__init__(body_material) = 'asd'
         self.propulsor = 'turbine'
     
     def set_speed(self, speed):
