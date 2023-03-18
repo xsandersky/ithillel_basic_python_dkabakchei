@@ -4,7 +4,7 @@ class Vehicle:
 
     def __init__(self, body_material):
         self.material = body_material
-        self.nubmer_of_seats = 150
+        self.number_of_seats = 150
         self.propulsor = 'engine'
 
 
@@ -43,6 +43,6 @@ if __name__=='__main__':
     airplane = Airplane('Cast iron')
     airplane.set_speed(850)
 
-    print(f'{train.get_full_name_object()} with {train.material} material, {train.nubmer_of_seats} number of seats and {train.number_of_wheels} wheels. The propulsor of this vehicle is {train.propulsor}. This vehicle makes the following sound: {train.make_noise()}\n')
+    print(f'{train.get_full_name_object()} with {train.material} material, {train.number_of_seats} number of seats and {train.number_of_wheels} wheels. The propulsor of this vehicle is {train.propulsor}. This vehicle makes the following sound: {train.make_noise()}\n')
 
-    print(f'{airplane.get_full_name_object()} with {airplane.material} material, {airplane.nubmer_of_seats} number of seats and {airplane.number_of_wheels} wheels. The propulsor of this vehicle is {airplane.propulsor}. This vehicle makes the following sound: {airplane.make_noise()} and speed is: {airplane.speed}')
+    print(f'{airplane.get_full_name_object()} with {airplane.material} material, {airplane.number_of_seats} number of seats and {airplane.number_of_wheels} wheels. The propulsor of this vehicle is {airplane.propulsor}. This vehicle makes the following sound: {airplane.make_noise()} and speed is: {airplane.speed}')
