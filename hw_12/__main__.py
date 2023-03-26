@@ -22,10 +22,10 @@ phone_book = [
 check_equal_phone_book = copy(phone_book)
 
 running = True
-decor_off = not args.verbose
+off = not args.verbose
 
 #------------------------------------------------------------------------------
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def print_phonebook():                                                 
     print ("\n\n#########  Phone book  ##########\n")
 
@@ -33,20 +33,20 @@ def print_phonebook():
         print_entry(number, entry)
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def add_entry_phonebook():                                                    
     global phone_book
 
-    entry = {}
-    entry["surname"] = get_input_str("Enter surname: ").capitalize()
-    entry["name"] = get_input_str("Enter name: ").capitalize()
-    entry["age"] = get_input_int("Enter age: ")
-    entry["phone_number"] = get_input_int("Enter phone num.: ")
-    entry["phone_operator"] = get_input_str("Enter phone operator: ").capitalize()
+    surname = get_input_str("Enter surname: ").capitalize()
+    name = get_input_str("Enter name: ").capitalize()
+    age = get_input_int("Enter age: ")
+    phone_number = get_input_int("Enter phone num.: ")
+    phone_operator = get_input_str("Enter phone operator: ").capitalize()
+    entry = {"surname": surname, "name": name, "age": age, "phone_number": phone_number, "phone_operator": phone_operator}
     phone_book.append(entry)
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def find_entry_name_phonebook():                                                      
     global phone_book
 
@@ -61,7 +61,7 @@ def find_entry_name_phonebook():
         printError("Not found!!")
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def find_entry_age_phonebook():                                                                
     global phone_book
     user_input = get_input_int('Введи возраст для поиска контакта: ')
@@ -75,7 +75,7 @@ def find_entry_age_phonebook():
         printError('Not found!')
 
  
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def find_entry_by_operator():                                                                 
     global phone_book
 
@@ -90,7 +90,7 @@ def find_entry_by_operator():
         printError('Not found!')
     
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def delete_entry_name_phonebook():                                                                
     global phone_book
     copy_phone_book = copy(phone_book)
@@ -111,12 +111,12 @@ def delete_entry_name_phonebook():
         print_entry(number, entry)
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def count_all_entries_in_phonebook():                                                            
     print ("Total number of entries: ", len(phone_book))
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def print_phonebook_by_age():                                                                    
     global phone_book
     phone_book.sort(key=lambda sort_age: sort_age['age'])
@@ -125,7 +125,7 @@ def print_phonebook_by_age():
         print_entry(number, entry)
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def increase_age():                                                                              
     global phone_book
 
@@ -136,7 +136,7 @@ def increase_age():
             entry['age'] += user_input
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def avr_age_of_all_persons():                                                                     
     global phone_book
     sum_age = 0
@@ -149,7 +149,7 @@ def avr_age_of_all_persons():
     print(f'Средний возраст всех людей в телефонной книге = {round(avg,2)}')
 
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def save_to_file():
     global phone_book
     user_input = get_input_str('Введи название файла (с расширением) куда сохранять: ')
@@ -158,7 +158,7 @@ def save_to_file():
         dump(phone_book, f)
     
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def load_from_file():
     global phone_book
 
@@ -178,7 +178,7 @@ def load_from_file():
     return phone_book
     
 
-@wrapper_off_on(decor_off)
+@wrapper_off_on(off)
 def exit():
       global running
       answer = get_input_str("У вас есть существующие данные. Сохранить их перед выходом из программы? (y/n): ", ('y', 'n'))
