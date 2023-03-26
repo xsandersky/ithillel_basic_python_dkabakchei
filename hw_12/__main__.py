@@ -36,18 +36,13 @@ def print_phonebook():
 @wrapper_off_on(decor_off)
 def add_entry_phonebook():                                                    
     global phone_book
-    surname = get_input_str("    Enter surname: ").capitalize()
-    name    = get_input_str("    Enter name: ").capitalize()
-    age     = get_input_int("    Enter age: ")
-    phone_number   = get_input_int("    Enter phone num.: ")
-    phone_operator = get_input_str("    Enter phone operator: ").capitalize()
 
     entry = {}
-    entry["surname"] = surname
-    entry["name"] = name
-    entry["age"] = age
-    entry["phone_number"] = phone_number
-    entry["phone_operator"] = phone_operator
+    entry["surname"] = get_input_str("Enter surname: ").capitalize()
+    entry["name"] = get_input_str("Enter name: ").capitalize()
+    entry["age"] = get_input_int("Enter age: ")
+    entry["phone_number"] = get_input_int("Enter phone num.: ")
+    entry["phone_operator"] = get_input_str("Enter phone operator: ").capitalize()
     phone_book.append(entry)
 
 
@@ -102,13 +97,15 @@ def delete_entry_name_phonebook():
 
     user_input = get_input_str('Введи кого хочешь удалить из телефонной книги: ')
     
-    for i in range(len(phone_book)):
-        if phone_book[i]['name'] == user_input:
-            del copy_phone_book[i]
+    for contact in phone_book:
+        if contact['name'] == user_input:
+            del copy_phone_book[contact]
+
     if phone_book == copy_phone_book:
         print('Нечего удалять')
     else:
         phone_book = copy_phone_book
+        print(f'Контакт с именем {user_input} был удален')
 
     for number, entry in enumerate(phone_book, start=1):
         print_entry(number, entry)
@@ -142,11 +139,12 @@ def increase_age():
 @wrapper_off_on(decor_off)
 def avr_age_of_all_persons():                                                                     
     global phone_book
-    sum = 0
+    sum_age = 0
 
-    for elem in phone_book:
-        sum += elem.pop('age')
-        avg = sum / len(phone_book)
+    for contact in phone_book:
+        sum_age += contact['age']
+
+    avg = sum_age / len(phone_book)
 
     print(f'Средний возраст всех людей в телефонной книге = {avg}')
 
@@ -155,10 +153,9 @@ def avr_age_of_all_persons():
 def save_to_file():
     global phone_book
     user_input = get_input_str('Введи название файла (с расширением) куда сохранять: ')
-
-    f = open(user_input, 'w')
-    dump(phone_book, f)
-    f.close
+    
+    with open(user_input, 'w') as f:
+        dump(phone_book, f)
     
 
 @wrapper_off_on(decor_off)
@@ -173,9 +170,9 @@ def load_from_file():
     phone_book.clear()
     user_input = get_input_str('Введи название файла, откуда загрузить телефонные данные: ')
 
-    f = open(user_input, 'r')
-    new_data_book = load(f)
-    f.close()
+    with open(user_input, 'r') as f:
+        new_data_book = load(f)
+        
     phone_book = new_data_book
 
     return phone_book
