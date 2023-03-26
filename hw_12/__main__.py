@@ -64,7 +64,7 @@ def find_entry_name_phonebook():
 @wrapper_off_on(decor_off)
 def find_entry_age_phonebook():                                                                
     global phone_book
-    user_input = get_input_int('Введи цифру: ')
+    user_input = get_input_int('Введи возраст для поиска контакта: ')
     flag = True
 
     for number, entry in enumerate(phone_book, start=1):
@@ -79,7 +79,7 @@ def find_entry_age_phonebook():
 def find_entry_by_operator():                                                                 
     global phone_book
 
-    user_input = get_input_str('Введи название мобильного оператора: ')
+    user_input = get_input_str('Введи название мобильного оператора: ').capitalize()
     flag = True
 
     for number, entry in enumerate(phone_book, start=1):
@@ -95,11 +95,11 @@ def delete_entry_name_phonebook():
     global phone_book
     copy_phone_book = copy(phone_book)
 
-    user_input = get_input_str('Введи кого хочешь удалить из телефонной книги: ')
+    user_input = get_input_str('Введи кого хочешь удалить из телефонной книги: ').capitalize()
     
     for contact in phone_book:
         if contact['name'] == user_input:
-            del copy_phone_book[contact]
+            copy_phone_book.remove(contact)
 
     if phone_book == copy_phone_book:
         print('Нечего удалять')
@@ -146,7 +146,7 @@ def avr_age_of_all_persons():
 
     avg = sum_age / len(phone_book)
 
-    print(f'Средний возраст всех людей в телефонной книге = {avg}')
+    print(f'Средний возраст всех людей в телефонной книге = {round(avg,2)}')
 
 
 @wrapper_off_on(decor_off)
