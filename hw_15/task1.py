@@ -1,12 +1,12 @@
 from copy import deepcopy
 from json import load, dump
 
-class InputFromUser:
+class InputHandler:
     def get_input_str(self, promt, value=None):
         while True:
             self.user_input = input(promt)
 
-            if value is not None:
+            if value:
                 while self.user_input not in value:
                     self.user_input = input(promt)
                 break
@@ -64,13 +64,10 @@ class PhoneBook:
 
 
     def output_phonebook(self, number, contact):
-            print ("--[ %s ]--------------------------" % number)
-            print ("| Surname: %20s |" % contact["surname"])
-            print ("| Name:    %20s |" % contact["name"])
-            print ("| Age:     %20s |" % contact["age"])
-            print ("| Phone:   %20s |" % contact["phone_number"])
-            print ("| Operator:%20s |" % contact["phone_operator"])
-            print ()
+        output_str = f"--[ {number} ]--------------------------\n"
+        for key, value in contact.items():
+            output_str += f"| {key.capitalize()}: {value:>20} |\n"
+        print(output_str)
 
 
     def print_phonebook(self):                                                 
@@ -100,16 +97,16 @@ class PhoneBook:
 
     def add_new_contact(self):
         self.new_contact = {}
-        self.new_contact['surname'] = InputFromUser.get_input_str(self, 'Введи фалимию: ').capitalize()
-        self.new_contact['name'] = InputFromUser.get_input_str(self, 'Введи имя: ').capitalize()
-        self.new_contact['age'] = InputFromUser.get_input_int(self, 'Введи возраст: ')
-        self.new_contact['phone_number'] = InputFromUser.get_input_int(self, 'Введи номер телефона: ')
-        self.new_contact['phone_operator'] = InputFromUser.get_input_str(self, 'Введи название оператора: ').capitalize()
+        self.new_contact['surname'] = InputHandler.get_input_str(self, 'Введи фалимию: ').capitalize()
+        self.new_contact['name'] = InputHandler.get_input_str(self, 'Введи имя: ').capitalize()
+        self.new_contact['age'] = InputHandler.get_input_int(self, 'Введи возраст: ')
+        self.new_contact['phone_number'] = InputHandler.get_input_int(self, 'Введи номер телефона: ')
+        self.new_contact['phone_operator'] = InputHandler.get_input_str(self, 'Введи название оператора: ').capitalize()
         self.phone_book.append(self.new_contact)
 
 
     def find_contact_by_name(self):
-        self.input_find_name = InputFromUser.get_input_str(self, 'Введи имя контакта, данные которого тебе нужны: ').capitalize()
+        self.input_find_name = InputHandler.get_input_str(self, 'Введи имя контакта, данные которого тебе нужны: ').capitalize()
         self.find_name = True
         
         for number, elem in enumerate(self.phone_book, start=1):
@@ -121,7 +118,7 @@ class PhoneBook:
 
 
     def find_contact_by_age(self):
-        self.input_find_age = InputFromUser.get_input_int(self, 'Введи возраст, для вывода контакта/ов: ')
+        self.input_find_age = InputHandler.get_input_int(self, 'Введи возраст, для вывода контакта/ов: ')
         self.find_age = True
         
         for number, elem in enumerate(self.phone_book, start=1):
@@ -133,7 +130,7 @@ class PhoneBook:
 
 
     def find_contact_by_operator(self):
-        self.input_find_operator = InputFromUser.get_input_str(self, 'Введи название оператора для вывода контактов: ').capitalize()
+        self.input_find_operator = InputHandler.get_input_str(self, 'Введи название оператора для вывода контактов: ').capitalize()
         self.find_operator = True
         
         for number, elem in enumerate(self.phone_book, start=1):
@@ -145,7 +142,7 @@ class PhoneBook:
 
 
     def remove_contact_by_name(self):
-        self.user_input = InputFromUser.get_input_str(self, 'Введи имя контакта которого хочешь удалить: ').capitalize()
+        self.user_input = InputHandler.get_input_str(self, 'Введи имя контакта которого хочешь удалить: ').capitalize()
         self.copy_phone_book = deepcopy(self.phone_book)
         self.flag_remove = True
 
@@ -161,7 +158,7 @@ class PhoneBook:
 
 
     def count_all_conacts(self):
-        print(f'Всего {len(self.phone_book)} контакта\ов в телефоннов книге')
+        print(f'Всего {len(self.phone_book)} контактов в телефоннов книге')
 
 
     def sort_phone_book_by_age(self):
@@ -169,7 +166,7 @@ class PhoneBook:
 
 
     def increase_age_for_all_contacts(self):
-        self.user_input = InputFromUser.get_input_int(self, 'Введи на сколько увеличить возраст контактов: ')
+        self.user_input = InputHandler.get_input_int(self, 'Введи на сколько увеличить возраст контактов: ')
         if len(self.phone_book) > 0:
             for contact in self.phone_book:
                 if contact['age']:
@@ -180,40 +177,38 @@ class PhoneBook:
     
     def avg_age_all_contacts(self):
         self.summary = 0
+
         for contact in self.phone_book:
             self.summary += contact['age']
         avg = self.summary / len(self.phone_book)
-        print(f'Средний возраст всех людей в телефонной книге = {avg}')
+
+        print(f'Средний возраст всех людей в телефонной книге = {round(avg,2)}')
 
 
     def save_to_file(self):
-        self.save_input = InputFromUser.get_input_str(self, 'Перезаписать этот файл? (y/n)', ('y', 'n')).lower()
+        self.save_input = InputHandler.get_input_str(self, 'Перезаписать этот файл? (y/n)', ('y', 'n')).lower()
 
         if self.save_input == 'y':
-            f = open('__main__.py', 'w')
-            dump(self.phone_book, f)
-            f.close
+            with open('__main__.py', 'w') as f:
+                dump(self.phone_book, f)
 
         else:
             self.user_input = input('Введи название файла куда сохранишь книгу контактов: ')
-            f = open(self.user_input, 'w')
-            dump(self.phone_book, f)
-            f.close
+            with open(self.user_input, 'w') as f:
+                dump(self.phone_book, f)
                 
 
 
     def load_from_file(self):
         if len(self.phone_book) > 0:
-            self.answer = InputFromUser.get_input_str(self, 'У вас есть существующие данные. Сохранить их перед загрузкой из файла? (y/n): ', ('y', 'n')).lower()
+            self.answer = InputHandler.get_input_str(self, 'У вас есть существующие данные. Сохранить их перед загрузкой из файла? (y/n): ', ('y', 'n')).lower()
             if self.answer == 'y':
                 self.save_to_file()
             self.phone_book.clear()
 
         self.user_input = input('Введи название файла, откуда загрузить телефонные данные: ')
-
-        f = open(self.user_input, 'r')
-        self.new_data_book = load(f)
-        f.close
+        with open(self.user_input, 'r') as f:
+            self.new_data_book = load(f)
 
         self.phone_book = self.new_data_book
 
@@ -221,7 +216,7 @@ class PhoneBook:
     
 
     def exit(self):
-        self.answer = InputFromUser.get_input_str(self, "У вас есть существующие данные. Сохранить их перед выходом из программы? (y/n): ", ('y', 'n')).lower()
+        self.answer = InputHandler.get_input_str(self, "У вас есть существующие данные. Сохранить их перед выходом из программы? (y/n): ", ('y', 'n')).lower()
         if self.answer == 'y':
                 self.save_to_file()
 
@@ -249,7 +244,7 @@ class User(PhoneBook):
                     }
             
             PhoneBook.print_promt(PhoneBook)
-            user_input = InputFromUser.get_input_str(InputFromUser, 'phonebook> ', '0123456789sla')
+            user_input = InputHandler.get_input_str(InputHandler, 'phonebook> ', '0123456789sla')
             menu[user_input](PhoneBook)
 
         except Exception as ex:
